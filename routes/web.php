@@ -31,6 +31,9 @@ Route::middleware(['auth.basic'])->prefix('dashboard')->group(function(){
     Route::get('sub_criteria/{id}/edit','SubCriteriaController@edit')->name('sub_criteria.edit');
     Route::put('sub_criteria/{id}/update','SubCriteriaController@update')->name('sub_criteria.update');
 
+    Route::get('assessment/{id}/saw','AssessmentController@saw')->name('assessment.saw');
+    Route::get('assessment/{id}/result','AssessmentController@result')->name('assessment.result');
+    Route::post('assessment/decision','AssessmentController@decision')->name('assessment.decision');
     Route::get('assessment','AssessmentController@index')->name('assessment');
     Route::post('assessment/store','AssessmentController@store')->name('assessment.store');
     Route::get('assessment/export','AssessmentController@export')->name('assessment.export');
