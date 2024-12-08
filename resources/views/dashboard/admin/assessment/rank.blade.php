@@ -1,6 +1,6 @@
 <div class="card border-0 mb-4 mt-2">
     <div class="card-header font-weight-bold text-light bg-primary">
-        Rank
+        Peringkat Fitter Terbaik
     </div>
 
         <div class="card-body">

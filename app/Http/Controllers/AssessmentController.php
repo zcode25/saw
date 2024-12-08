@@ -73,9 +73,19 @@ class AssessmentController extends Controller
         return view('dashboard.admin.assessment.result', compact('criterias', 'employes', 'arr', 'criteria_filtered', 'decision_id'));
     }
 
-    public function export(){
-        $criteria_filtered = Criteria::orderBy('criteria_code','Asc')->with('sub_criteria')->get();
-        $arr = Assessment::dss_saw();
+    // public function export(){
+    //     $criteria_filtered = Criteria::orderBy('criteria_code','Asc')->with('sub_criteria')->get();
+    //     $arr = Assessment::dss_saw();
+    //     $pdf = PDF::loadview('dashboard.admin.assessment.rank',compact('criteria_filtered','arr'))->setPaper('a4', 'landscape');
+    // 	return $pdf->download('Employe Rank');
+    // }
+
+    public function export($id){
+        $criteria_filtered = Criteria::orderBy('criteria_code', 'Asc')
+            ->has('assessment')
+            ->with('sub_criteria')
+            ->get();
+        $arr = Assessment::dss_saw($id);
         $pdf = PDF::loadview('dashboard.admin.assessment.rank',compact('criteria_filtered','arr'))->setPaper('a4', 'landscape');
     	return $pdf->download('Employe Rank');
     }

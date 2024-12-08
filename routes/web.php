@@ -36,7 +36,7 @@ Route::middleware(['auth.basic'])->prefix('dashboard')->group(function(){
     Route::post('assessment/decision','AssessmentController@decision')->name('assessment.decision');
     Route::get('assessment','AssessmentController@index')->name('assessment');
     Route::post('assessment/store','AssessmentController@store')->name('assessment.store');
-    Route::get('assessment/export','AssessmentController@export')->name('assessment.export');
+    Route::get('assessment/{id}/export','AssessmentController@export')->name('assessment.export');
 
     Route::get('employe','EmployeController@index')->name('employe');
     Route::get('employe/create','EmployeController@create')->name('employe.create');
